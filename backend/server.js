@@ -4,6 +4,11 @@ const express = require('express');
 const app =express();
 
 require('./src/config/db');
+
+app.use(express.json());
+app.use('/api/auth',require('./src/routes/authRoutes'))
+
+
 const PORT = process.env.PORT || 5000;
 
 
