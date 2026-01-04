@@ -2,11 +2,14 @@ require('dotenv').config();
 
 const express = require('express');
 const app =express();
+const cookieParser = require('cookie-parser');
 
 require('./src/config/db');
 
 app.use(express.json());
-app.use('/api/auth',require('./src/routes/authRoutes'))
+app.use(cookieParser());
+app.use('/api/auth',require('./src/routes/authRoutes'));
+app.use('/api/user',require('./src/routes/userRoutes'))
 
 
 const PORT = process.env.PORT || 5000;
