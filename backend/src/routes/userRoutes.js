@@ -1,5 +1,6 @@
 const express = require('express');
 const authMiddleware=require('../middlewares/authMiddleware');
+const {onboarding}=require('../contollers/userController')
 
 const router = express.Router();
 
@@ -9,5 +10,7 @@ router.get('/home',authMiddleware,(req,res)=>{
     user:req.user.email
   });
 });
+
+router.post('/onboarding',authMiddleware,onboarding)
 
 module.exports = router;
